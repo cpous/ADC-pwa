@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ca">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#123d43">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="description" content="Simulador interactiu de quantificació ADC">
+  <title>Simulador ADC</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+  <link rel="icon" href="./icons/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+<main class="app">
+  <header><div><span class="eyebrow">LABORATORI DIGITAL</span><h1>Simulador ADC</h1></div><button id="install" class="secondary">Instal·la</button></header>
+  <section class="controls" aria-label="Paràmetres del convertidor">
+    <label>Amplitud (V)<select id="amplitude"><option>1</option><option>2</option><option>4</option><option>5</option><option>8</option><option>10</option></select></label>
+    <label>Resolució (bits)<select id="bits"><option>2</option><option>4</option><option selected>8</option><option>16</option></select></label>
+    <label>Rang d’entrada<select id="range"><option value="0.5">−0,5 a +0,5 V</option><option value="1" selected>−1 a +1 V</option><option value="2">−2 a +2 V</option><option value="5">−5 a +5 V</option><option value="10">−10 a +10 V</option></select></label>
+  </section>
+  <section class="readings" aria-label="Resultats" aria-live="polite"><div><span>Resolució LSB</span><strong id="lsb"></strong></div><div><span>Nivells · 2ⁿ</span><strong id="levels"></strong></div><div><span>Senyal d’entrada</span><strong id="status"></strong></div></section>
+  <section class="chart-card" aria-label="Gràfica del senyal">
+    <div class="chart-top"><div class="legend"><span class="analog">Analògic</span><span class="digital">Digitalitzat</span></div><div class="zoom"><button id="zoom-out" aria-label="Allunya la gràfica">−</button><button id="zoom-in" aria-label="Apropa la gràfica">+</button><button id="reset">Restableix</button></div></div>
+    <div class="plot"><canvas id="chart" role="img" aria-label="Senyal sinusoïdal analògic i senyal quantificat"></canvas></div>
+    <p class="hint">Zoom: botons, rodeta o dos dits · Arrossega per desplaçar</p>
+  </section>
+  <footer><span>Sinusoide d’1 Hz · 1.000 punts</span><span id="offline" role="status">Preparant ús sense connexió…</span></footer>
+</main>
+<dialog id="install-help"><h2>Instal·la el simulador</h2><p><b>iPhone / iPad:</b> obre la pàgina amb Safari, prem Compartir i «Afegir a la pantalla d’inici».</p><p><b>Android:</b> al menú del navegador, tria «Instal·la l’aplicació» o «Afegeix a la pantalla d’inici».</p><p>Obre-la una primera vegada amb connexió i espera que indiqui «Disponible sense connexió».</p><form method="dialog"><button>Entesos</button></form></dialog>
+<noscript>Cal activar JavaScript per fer servir el simulador.</noscript>
+</body>
+</html>
